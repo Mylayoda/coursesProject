@@ -7,12 +7,12 @@ using System.Web;
 
 namespace courses.Entities
 {
-    [Table("ModuleType")]
-    public class ModuleType
+    [Table("CourseType")]
+    public class CourseType
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [MaxLength(255)]
+        [MaxLength(25)]
         [Required]
         public string Title { get; set; }
     }

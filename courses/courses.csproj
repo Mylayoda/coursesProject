@@ -171,9 +171,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entities\Course.cs" />
+    <Compile Include="Entities\CourseModule.cs" />
+    <Compile Include="Entities\CourseLinkText.cs" />
+    <Compile Include="Entities\CourseSubscription.cs" />
+    <Compile Include="Entities\CourseType.cs" />
+    <Compile Include="Entities\Module.cs" />
     <Compile Include="Entities\ModuleType.cs" />
     <Compile Include="Entities\Part.cs" />
     <Compile Include="Entities\Section.cs" />
+    <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\UserSubscription.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

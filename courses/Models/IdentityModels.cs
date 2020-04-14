@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using courses.Entities;
 
+
 namespace courses.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -33,5 +34,15 @@ namespace courses.Models
         }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Part> Parts { get; set; }
+        public DbSet<ModuleType> ModuleTypes { get; set; }
+        public DbSet<Module> Modules { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseType> CourseTypes { get; set; }
+        public DbSet<CourseLinkText> CourseLinkText { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<CourseModule> CourseModules { get; set; }
+        public DbSet<CourseSubscription> CourseSubscription { get; set; }
+        public DbSet<UserSubscription> UserSubscriptions { get; set; }
+
     }
 }
