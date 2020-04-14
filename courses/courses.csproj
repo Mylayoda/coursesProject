@@ -168,6 +168,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseLinkTextController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseTypeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModuleTypeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PartController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SectionController.cs" />
+    <Compile Include="Areas\Admin\Models\ButtonModuleSmall.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,6 +189,8 @@
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\UserSubscription.cs" />
+    <Compile Include="Extensions\ICollectionExtentions.cs" />
+    <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -254,6 +263,42 @@
     <Content Include="Content\Documents\maths.pdf" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Section\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Section\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Section\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Section\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Section\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_BackToListButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_CreateButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SmallButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_TableButtonPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleType\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleType\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleType\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleType\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseType\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseType\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseType\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseType\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseLinkText\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseLinkText\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseLinkText\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseLinkText\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseLinkText\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -306,8 +351,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
