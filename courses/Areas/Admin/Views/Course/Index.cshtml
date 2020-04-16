@@ -1,0 +1,56 @@
+﻿@model IEnumerable<courses.Areas.Admin.Models.CourseModel>
+@using courses.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.Partial("_CreateButtonPartial")
+</p>
+<table class="table table-striped">
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CourseLinkTexts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseTypes)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseLinkText)
+                (@{ @Html.DisplayFor(modelItem => item.CourseLinkTextId)})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseType)
+                (@{ @Html.DisplayFor(modelItem => item.CourseTypeId)})
+            </td>
+
+            
+            @Html.Partial("_TableButtonPartial", new ButtonModuleSmall { Id = item.Id })
+        </tr>
+    }
+
+</table>

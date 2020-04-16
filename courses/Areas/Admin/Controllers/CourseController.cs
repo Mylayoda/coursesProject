@@ -9,119 +9,124 @@ using System.Web;
 using System.Web.Mvc;
 using courses.Entities;
 using courses.Models;
+using courses.Areas.Admin.Extension;
+using courses.Areas.Admin.Models;
 
 namespace courses.Areas.Admin.Controllers
 {
-    public class ModuleController : Controller
+    public class CourseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Admin/Module
+        // GET: Admin/Course
         public async Task<ActionResult> Index()
         {
-            return View(await db.Modules.ToListAsync());
+            var courses = await db.Courses.ToListAsync();
+            var model = await courses.Convert(db);
+            return View(model);
         }
 
-        // GET: Admin/Module/Details/5
+        // GET: Admin/Course/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Modules.FindAsync(id);
-            if (module == null)
+            Course course = await db.Courses.FindAsync(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(module);
+            var model = await course.Convert(db);
+            return View(model);
         }
 
-        // GET: Admin/Module/Create
-        public ActionResult Create()
+        // GET: Admin/Course/Create
+        public async Task<ActionResult> Create()
         {
-            var model = new Module
+            var model = new CourseModel
             {
-                ModuleTypes = db.ModuleTypes.ToList(),
-                Parts = db.Parts.ToList(),
-                Sections = db.Sections.ToList()
+                CourseLinkTexts = await db.CourseLinkText.ToListAsync(),
+                CourseTypes = await db.CourseTypes.ToListAsync(),
             };
             return View(model);
         }
 
-        // POST: Admin/Module/Create
+        // POST: Admin/Course/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Url,ImageUrl,HTML,WaitDays,ProductId,ModuleTypeId,SectionId,PartId,IsFree")] Module module)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,ImageUrl,CourseLinkTextId,CourseTypeId")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Modules.Add(module);
+                db.Courses.Add(course);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(module);
+            return View(course);
         }
 
-        // GET: Admin/Module/Edit/5
+        // GET: Admin/Course/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Modules.FindAsync(id);
-            if (module == null)
+            Course course = await db.Courses.FindAsync(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            module.ModuleTypes = db.ModuleTypes.ToList();
-            module.Parts = db.Parts.ToList();
-            module.Sections = db.Sections.ToList();
-            return View(module);
+            var cor = new List<Course>();
+            cor.Add(course);
+            var CourseModel = await cor.Convert(db);
+            return View(CourseModel.First());
         }
 
-        // POST: Admin/Module/Edit/5
+        // POST: Admin/Course/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Url,ImageUrl,HTML,WaitDays,ProductId,ModuleTypeId,SectionId,PartId,IsFree")] Module module)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,ImageUrl,CourseLinkTextId,CourseTypeId")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(module).State = EntityState.Modified;
+                db.Entry(course).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(module);
+            return View(course);
         }
 
-        // GET: Admin/Module/Delete/5
+        // GET: Admin/Course/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Modules.FindAsync(id);
-            if (module == null)
+            Course course = await db.Courses.FindAsync(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(module);
+            var model = await course.Convert(db);
+            return View(model);
         }
 
-        // POST: Admin/Module/Delete/5
+        // POST: Admin/Course/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Module module = await db.Modules.FindAsync(id);
-            db.Modules.Remove(module);
+            Course course = await db.Courses.FindAsync(id);
+            db.Courses.Remove(course);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
