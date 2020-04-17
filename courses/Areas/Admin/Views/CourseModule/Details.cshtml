@@ -1,0 +1,30 @@
+﻿@model courses.Areas.Admin.Models.CourseModuleModel
+@using courses.Areas.Admin.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course Module</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.ModuleTitle) </dt>
+        <dd>
+            @Html.DisplayFor(m => m.ModuleTitle)
+        </dd>
+        <dt>@Html.DisplayNameFor(m => m.CourseTitle)</dt>
+
+        <dd>
+            @Html.DisplayFor(m => m.CourseTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.Partial("_EditButtonDetailPartial", 
+        new EditButtonModel {ModuleId = Model.ModuleId, CourseId = Model.CourseId })
+    @Html.Partial("_BackToListButtonPartial")
+</p>

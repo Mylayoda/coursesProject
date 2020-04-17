@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -170,6 +171,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseLinkTextController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleTypeController.cs" />
@@ -179,6 +181,8 @@
     <Compile Include="Areas\Admin\Extension\ConversionExtensions.cs" />
     <Compile Include="Areas\Admin\Models\ButtonModuleSmall.cs" />
     <Compile Include="Areas\Admin\Models\CourseModel.cs" />
+    <Compile Include="Areas\Admin\Models\CourseModuleModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -469,6 +473,12 @@
     <Content Include="Content\Documents\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="Content\Documents\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="Content\Documents\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Areas\Admin\Views\CourseModule\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseModule\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseModule\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseModule\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseModule\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditButtonDetailPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

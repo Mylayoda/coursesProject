@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-
-
+using System.Transactions;
 
 namespace courses.Areas.Admin.Extension
 {
@@ -61,6 +60,91 @@ namespace courses.Areas.Admin.Extension
 
             return model;
         }
+
+        public static async Task<IEnumerable<CourseModuleModel>> Convert(
+       this IQueryable<CourseModule> courseModules, ApplicationDbContext db)
+        {
+            if (courseModules.Count().Equals(0))
+                return new List<CourseModuleModel>();
+
+            return await (from pi in courseModules
+                          select new CourseModuleModel
+                          {
+                              ModuleId = pi.ModuleId,
+                              CourseId = pi.CourseId,
+                              ModuleTitle = db.Modules.FirstOrDefault(
+                                  i => i.Id.Equals(pi.ModuleId)).Title,
+                              CourseTitle = db.Courses.FirstOrDefault(
+                                  p => p.Id.Equals(pi.CourseId)).Title
+                          }).ToListAsync();
+        }
+
+        public static async Task<CourseModuleModel> Convert(
+        this CourseModule courseModule, ApplicationDbContext db, bool addListData = true)
+        {
+
+
+            var model = new CourseModuleModel
+            {
+                ModuleId = courseModule.ModuleId,
+                CourseId = courseModule.CourseId,
+                Modules = addListData ? await db.Modules.ToListAsync() : null,
+            courses = addListData ? await db.Courses.ToListAsync() : null,
+            ModuleTitle =(await db.Modules.FirstOrDefaultAsync(i =>i.Id.Equals(courseModule.ModuleId))).Title,
+            CourseTitle = (await db.Courses.FirstOrDefaultAsync(p=>p.Id.Equals(courseModule.CourseId))).Title
+            };
+            return model;
+        }
+
+        public static async Task<bool> CanChange(
+            this CourseModule courseModule, ApplicationDbContext db)
+        {
+            var oldPI = await db.CourseModules.CountAsync(pi =>
+                pi.CourseId.Equals(courseModule.OldCourseId) &&
+                pi.ModuleId.Equals(courseModule.OldModuleId));
+
+            var newPI = await db.CourseModules.CountAsync(pi =>
+                pi.CourseId.Equals(courseModule.CourseId) &&
+                pi.ModuleId.Equals(courseModule.ModuleId));
+
+            return oldPI.Equals(1) && newPI.Equals(0);
+        }
+
+        public static async Task Change(
+            this CourseModule courseModule, ApplicationDbContext db)
+        {
+            var oldCourseModule = await db.CourseModules.FirstOrDefaultAsync(
+                    pi => pi.CourseId.Equals(courseModule.OldCourseId) &&
+                    pi.ModuleId.Equals(courseModule.OldModuleId));
+
+            var newCourseModule = await db.CourseModules.FirstOrDefaultAsync(
+                pi => pi.CourseId.Equals(courseModule.CourseId) &&
+                pi.ModuleId.Equals(courseModule.ModuleId));
+
+            if (oldCourseModule != null && newCourseModule == null)
+            {
+                newCourseModule = new CourseModule
+                {
+                    ModuleId = courseModule.ModuleId,
+                    CourseId = courseModule.CourseId
+                };
+
+                using (var transaction = new TransactionScope(
+                    TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    try
+                    {
+                        db.CourseModules.Remove(oldCourseModule);
+                        db.CourseModules.Add(newCourseModule);
+
+                        await db.SaveChangesAsync();
+                        transaction.Complete();
+                    }
+                    catch { transaction.Dispose(); }
+                }
+            }
+        }
+
 
     }
 }
