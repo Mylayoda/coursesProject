@@ -1,0 +1,30 @@
+﻿@model courses.Areas.Admin.Models.CourseSubscriptionModel
+@using courses.Areas.Admin.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course Subscription</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.SubscriptionTitle) </dt>
+        <dd>
+            @Html.DisplayFor(m => m.SubscriptionTitle)
+        </dd>
+        <dt>@Html.DisplayNameFor(m => m.CourseTitle)</dt>
+
+        <dd>
+            @Html.DisplayFor(m => m.CourseTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.Partial("_EditButtonDetailPartial", 
+        new EditButtonModel {SubscriptionId = Model.SubscriptionId, CourseId = Model.CourseId })
+    @Html.Partial("_BackToListButtonPartial")
+</p>

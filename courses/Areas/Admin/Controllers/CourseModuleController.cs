@@ -14,6 +14,7 @@ using courses.Areas.Admin.Extension;
 
 namespace courses.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CourseModuleController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

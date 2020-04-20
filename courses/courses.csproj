@@ -172,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseLinkTextController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseModuleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseSubscriptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleTypeController.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Areas\Admin\Extension\ConversionExtensions.cs" />
     <Compile Include="Areas\Admin\Models\ButtonModuleSmall.cs" />
     <Compile Include="Areas\Admin\Models\CourseModel.cs" />
+    <Compile Include="Areas\Admin\Models\CourseSubscriptionModel.cs" />
     <Compile Include="Areas\Admin\Models\CourseModuleModel.cs" />
     <Compile Include="Areas\Admin\Models\EditButtonModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -479,6 +481,11 @@
     <Content Include="Areas\Admin\Views\CourseModule\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CourseModule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditButtonDetailPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSubscription\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSubscription\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSubscription\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSubscription\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSubscription\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

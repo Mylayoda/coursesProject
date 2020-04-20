@@ -14,6 +14,7 @@ using courses.Areas.Admin.Models;
 
 namespace courses.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CourseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
