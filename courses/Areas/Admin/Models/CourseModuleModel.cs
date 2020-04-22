@@ -9,7 +9,7 @@ namespace courses.Areas.Admin.Models
 {
     public class CourseModuleModel
     {
-        [DisplayName("Product Id")]
+        [DisplayName("Course Id")]
         public int CourseId { get; set; }
         [DisplayName("Module Id")]
         public int ModuleId { get; set; }

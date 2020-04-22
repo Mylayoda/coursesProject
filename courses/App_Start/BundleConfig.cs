@@ -29,6 +29,9 @@ namespace courses
 
             bundles.Add(new ScriptBundle("~/bundles/Admin").Include(
                      "~/Scripts/AdminMenu.js"));
+            bundles.Add(new StyleBundle("~/Content/courses").Include(
+                      "~/Content/navbar.css",
+                      "~/Content/thumbnails.css"));
 
         }
     }

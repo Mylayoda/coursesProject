@@ -46,7 +46,8 @@ namespace courses.Models
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<CourseModule> CourseModules { get; set; }
         public DbSet<CourseSubscription> CourseSubscriptions { get; set; }
-        public DbSet<UserSubscription> UserSubscriptions { get; set; }
+        public DbSet<UserSubscription> StudentSubscriptions { get; set; }
 
+        
     }
 }

@@ -1,276 +1,292 @@
-﻿@{
+﻿@model IEnumerable<courses.Models.ThumbnailAreaModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="~/Content/images/edu3.jpg.png" alt="ASP.NET" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Build Your Confident With Our Master Tutorials
-                        <a class="btn btn-default" href="#">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="~/Content/images/New.png" alt="Visual Studio" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Learn more about our services
-                        <a class="btn btn-default" href="#">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="~/Content/images/ni.png" alt="Microsoft Azure" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Learn About Us
-                        <a class="btn btn-default" href="#">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-</div>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <center>
-                    <h4> Study With iLearn</h4>
-                    <p><b>Your Perfect Home Learning Partner</b></p>
-                </center>
-            </div>
-        </div>
-    </div>
     <div class="row">
-        <div class="col-md-3">
-            <center>
-                <img width="150" height="100" src="~/Content/images/student1.jpg" />
-                <h4>English Course</h4>
-                <p class="text-justify">Learn English Online with Live Native Teachers, 24/7.</p>
-                <!-- Button trigger modal -->
-                <p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                        more...
-                    </button>
-                </p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            foreach (var area in Model)
+            {
+                @Html.Partial("_ThumbnailAreaPartial", area)
+            }
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <center>
-                                    <p>
-                                        <h3 class="modal-title" id="exampleModalLongTitle">
-                                            Enlish<br>
-                                            <img src="~/Content/images/student1.jpg" style="width:150px" />
-                                        </h3>
-                                    </p>
-                                </center>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p><b>The English programme covers the following key components of written English:</b></p>
-                                <p>
-                                    Reading Comprehension
-                                    Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
-
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </center>
-        </div>
-
-        <div class="col-md-3">
-            <center>
-                <img width="150" height="100" src="~/Content/images/science.png" />
-                <h4>Science Course</h4>
-                <p class="text-justify">
-                    Beginnger to advanced Science Course with professional Science teachers
-
-                </p>
-            </center>
-            <p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                    more...
-                </button>
-            </p>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <center>
-                                <p>
-                                    <h3 class="modal-title" id="exampleModalLongTitle">
-                                        Science<br>
-                                        <img src="~/Content/images/sci.png" style="width:150px" />
-                                    </h3>
-                                </p>
-                            </center>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><b>The English programme covers the following key components of written English:</b></p>
+        }
+        else
+        {
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="~/Content/images/edu3.jpg.png" alt="ASP.NET" class="img-responsive" />
+                        <div class="carousel-caption" role="option">
                             <p>
-                                Reading Comprehension
-                                Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
-
+                                Build Your Confident With Our Master Tutorials
+                                <a class="btn btn-default" href="#">
+                                    Learn More
+                                </a>
                             </p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <center>
-                <img width="150" height="100" src="~/Content/images/student.jpg" />
-                <h4>Maths Course</h4>
-                <p class="text-justify">
-                    Learn Maths Online with Live Native Teachers, 24/7.
-
-                </p>
-            </center>
-            <p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                    more...
-                </button>
-            </p>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <center>
-                                <p>
-                                    <h3 class="modal-title" id="exampleModalLongTitle">
-                                        Enlish
-                                        <img src="~/Content/images/student.jpg" style="width:150px" />
-                                    </h3>
-                                </p>
-                            </center>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><b>The English programme covers the following key components of written English:</b></p>
+                    <div class="item">
+                        <img src="~/Content/images/New.png" alt="Visual Studio" class="img-responsive" />
+                        <div class="carousel-caption" role="option">
                             <p>
-                                Reading Comprehension
-                                Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
-
+                                Learn more about our services
+                                <a class="btn btn-default" href="#">
+                                    Learn More
+                                </a>
                             </p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                        </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <center>
-                <img width="150" height="100" src="~/Content/images/de.jpg" />
-                <h4>ICT Course</h4>
-                <p class="text-justify">
-                    Master ICT Online with Live Native Teachers, 24/7.
-                </p>
-            </center>
-            <p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                    more...
-                </button>
-            </p>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <center>
-                                <p>
-                                    <h3 class="modal-title" id="exampleModalLongTitle">
-                                        Enlish
-                                        <img src="~/Content/images/de.jpg" style="width:150px" />
-                                    </h3>
-                                </p>
-                            </center>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><b>The English programme covers the following key components of written English:</b></p>
+                    <div class="item">
+                        <img src="~/Content/images/ni.png" alt="Microsoft Azure" class="img-responsive" />
+                        <div class="carousel-caption" role="option">
                             <p>
-                                Reading Comprehension
-                                Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
-
+                                Learn About Us
+                                <a class="btn btn-default" href="#">
+                                    Learn More
+                                </a>
                             </p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
 
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <center>
+                                <h4> Study With iLearn</h4>
+                                <p><b>Your Perfect Home Learning Partner</b></p>
+                            </center>
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="card border-danger mb-4">
-            <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-md-3">
                         <center>
-                            <img src="~/Content/images/pat4.png" />
+                            <img width="150" height="100" src="~/Content/images/student1.jpg" />
+                            <h4>English Course</h4>
+                            <p class="text-justify">Learn English Online with Live Native Teachers, 24/7.</p>
+                            <!-- Button trigger modal -->
+                            <p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                    more...
+                                </button>
+                            </p>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <center>
+                                                <p>
+                                                    <h3 class="modal-title" id="exampleModalLongTitle">
+                                                        Enlish<br>
+                                                        <img src="~/Content/images/student1.jpg" style="width:150px" />
+                                                    </h3>
+                                                </p>
+                                            </center>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><b>The English programme covers the following key components of written English:</b></p>
+                                            <p>
+                                                Reading Comprehension
+                                                Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
+
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </center>
                     </div>
+
+                    <div class="col-md-3">
+                        <center>
+                            <img width="150" height="100" src="~/Content/images/science.png" />
+                            <h4>Science Course</h4>
+                            <p class="text-justify">
+                                Beginnger to advanced Science Course with professional Science teachers
+
+                            </p>
+                        </center>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                more...
+                            </button>
+                        </p>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center>
+                                            <p>
+                                                <h3 class="modal-title" id="exampleModalLongTitle">
+                                                    Science<br>
+                                                    <img src="~/Content/images/sci.png" style="width:150px" />
+                                                </h3>
+                                            </p>
+                                        </center>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><b>The English programme covers the following key components of written English:</b></p>
+                                        <p>
+                                            Reading Comprehension
+                                            Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <center>
+                            <img width="150" height="100" src="~/Content/images/student.jpg" />
+                            <h4>Maths Course</h4>
+                            <p class="text-justify">
+                                Learn Maths Online with Live Native Teachers, 24/7.
+
+                            </p>
+                        </center>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                more...
+                            </button>
+                        </p>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center>
+                                            <p>
+                                                <h3 class="modal-title" id="exampleModalLongTitle">
+                                                    Enlish
+                                                    <img src="~/Content/images/student.jpg" style="width:150px" />
+                                                </h3>
+                                            </p>
+                                        </center>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><b>The English programme covers the following key components of written English:</b></p>
+                                        <p>
+                                            Reading Comprehension
+                                            Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <center>
+                            <img width="150" height="100" src="~/Content/images/de.jpg" />
+                            <h4>ICT Course</h4>
+                            <p class="text-justify">
+                                Master ICT Online with Live Native Teachers, 24/7.
+                            </p>
+                        </center>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                more...
+                            </button>
+                        </p>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <center>
+                                            <p>
+                                                <h3 class="modal-title" id="exampleModalLongTitle">
+                                                    Enlish
+                                                    <img src="~/Content/images/de.jpg" style="width:150px" />
+                                                </h3>
+                                            </p>
+                                        </center>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><b>The English programme covers the following key components of written English:</b></p>
+                                        <p>
+                                            Reading Comprehension
+                                            Students will develop their literal reading comprehension skills by reading, listening to, and interacting with a variety of text types.
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
+
+                <div class="col-md-6">
+                    <div class="card border-danger mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <center>
+                                        <img src="~/Content/images/pat4.png" />
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        }
     </div>
-</section>

@@ -1,0 +1,19 @@
+﻿.navbar {
+    border-bottom: 1px solid #C8C8C8;
+    background-color: #FFF;
+}
+.nav a {
+    color: #555;
+}
+
+.nav a:hover {
+        color: lightseagreen;
+    }
+.nav > li > a:hover {
+    background-color: white;
+}
+
+
+.body-content {
+    margin-top: 40px;
+}

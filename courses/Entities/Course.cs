@@ -20,6 +20,7 @@ namespace courses.Entities
         [MaxLength(1024)]
         public string ImageUrl { get; set; }
         public int CourseLinkTextId { get; set; }
+        public int CourseModuleId { get; set; }
         public int CourseTypeId { get; set; }
     }
 }
