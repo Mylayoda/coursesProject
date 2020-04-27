@@ -201,7 +201,7 @@
     <Compile Include="Entities\Part.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Subscription.cs" />
-    <Compile Include="Entities\UserSubscription.cs" />
+    <Compile Include="Entities\StudentSubscription.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtentions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202004220658429_CourseModel.cs" />
     <Compile Include="Migrations\202004220658429_CourseModel.Designer.cs">
       <DependentUpon>202004220658429_CourseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004270833511_New.cs" />
+    <Compile Include="Migrations\202004270833511_New.Designer.cs">
+      <DependentUpon>202004270833511_New.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -235,6 +239,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CourseContent.css" />
     <Content Include="Content\Documents\css\main.css" />
     <Content Include="Content\Documents\css\site.css" />
     <Content Include="Content\Documents\css\site.min.css" />
@@ -563,6 +568,7 @@
     <Content Include="Views\Account\Subscriptions.cshtml" />
     <Content Include="Views\Shared\_ThumbnailAreaPartial.cshtml" />
     <Content Include="Views\CourseContent\Index.cshtml" />
+    <Content Include="Views\CourseContent\CourseSectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -583,6 +589,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004220658429_CourseModel.resx">
       <DependentUpon>202004220658429_CourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004270833511_New.resx">
+      <DependentUpon>202004270833511_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

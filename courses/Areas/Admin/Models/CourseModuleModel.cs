@@ -17,7 +17,7 @@ namespace courses.Areas.Admin.Models
         public string CourseTitle { get; set; }
         [DisplayName("Module Title")]
         public string ModuleTitle { get; set; }
-        public ICollection<Course> courses { get; set; }
+        public ICollection<Course> Courses { get; set; }
         public ICollection<Module> Modules { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace courses.Areas.Admin.Controllers
         // GET: Admin/CourseModule
         public async Task<ActionResult> Index()
         {
-            return View(await db.CourseModules.Convert(db));
+            return View(await db.courseModules.Convert(db));
         }
 
         // GET: Admin/CourseModule/Details/5
@@ -46,7 +46,7 @@ namespace courses.Areas.Admin.Controllers
             var model = new CourseModuleModel
             {
                 Modules = await db.Modules.ToListAsync(),
-                courses = await db.Courses.ToListAsync()
+                Courses = await db.Courses.ToListAsync()
             };
             return View(model);
         }
@@ -60,7 +60,7 @@ namespace courses.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CourseModules.Add(courseModule);
+                db.courseModules.Add(courseModule);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -124,7 +124,7 @@ namespace courses.Areas.Admin.Controllers
         public async Task<ActionResult> DeleteConfirmed(int moduleId, int courseId)
         {
             CourseModule courseModule = await GetCourseModule(moduleId, courseId);
-            db.CourseModules.Remove(courseModule);
+            db.courseModules.Remove(courseModule);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -136,7 +136,7 @@ namespace courses.Areas.Admin.Controllers
                 int modId = 0, cosId = 0;
                 int.TryParse(moduleId.ToString(), out modId);
                 int.TryParse(courseId.ToString(), out cosId);
-                var courseModule = await db.CourseModules.FirstOrDefaultAsync(
+                var courseModule = await db.courseModules.FirstOrDefaultAsync(
                     pi => pi.CourseId.Equals(cosId) && pi.ModuleId.Equals(modId));
                 return courseModule;
             }

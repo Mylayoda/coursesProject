@@ -20,7 +20,7 @@ namespace courses.Areas.Admin.Controllers
         // GET: Admin/CourseLinkText
         public async Task<ActionResult> Index()
         {
-            return View(await db.CourseLinkText.ToListAsync());
+            return View(await db.CourseLinkTexts.ToListAsync());
         }
 
         // GET: Admin/CourseLinkText/Details/5
@@ -30,7 +30,7 @@ namespace courses.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseLinkText courseLinkText = await db.CourseLinkText.FindAsync(id);
+            CourseLinkText courseLinkText = await db.CourseLinkTexts.FindAsync(id);
             if (courseLinkText == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace courses.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CourseLinkText.Add(courseLinkText);
+                db.CourseLinkTexts.Add(courseLinkText);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace courses.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseLinkText courseLinkText = await db.CourseLinkText.FindAsync(id);
+            CourseLinkText courseLinkText = await db.CourseLinkTexts.FindAsync(id);
             if (courseLinkText == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace courses.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseLinkText courseLinkText = await db.CourseLinkText.FindAsync(id);
+            CourseLinkText courseLinkText = await db.CourseLinkTexts.FindAsync(id);
             if (courseLinkText == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace courses.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            CourseLinkText courseLinkText = await db.CourseLinkText.FindAsync(id);
-            db.CourseLinkText.Remove(courseLinkText);
+            CourseLinkText courseLinkText = await db.CourseLinkTexts.FindAsync(id);
+            db.CourseLinkTexts.Remove(courseLinkText);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

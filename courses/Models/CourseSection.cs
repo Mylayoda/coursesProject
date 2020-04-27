@@ -10,6 +10,6 @@ namespace courses.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public int ModuleTypeId { get; set; }
-        public IEnumerable<CourseModuleRow> Items { get; set; }
+        public IEnumerable<CourseModuleRow> Modules { get; set; }
     }
 }

@@ -22,8 +22,8 @@ namespace courses.Areas.Admin.Controllers
         // GET: Admin/Course
         public async Task<ActionResult> Index()
         {
-            var courses = await db.Courses.ToListAsync();
-            var model = await courses.Convert(db);
+            var Courses = await db.Courses.ToListAsync();
+            var model = await Courses.Convert(db);
             return View(model);
         }
 
@@ -48,7 +48,7 @@ namespace courses.Areas.Admin.Controllers
         {
             var model = new CourseModel
             {
-                CourseLinkTexts = await db.CourseLinkText.ToListAsync(),
+                CourseLinkTexts = await db.CourseLinkTexts.ToListAsync(),
                 CourseTypes = await db.CourseTypes.ToListAsync(),
             };
             return View(model);

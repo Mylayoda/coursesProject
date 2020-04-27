@@ -13,15 +13,15 @@ namespace courses.Areas.Admin.Extension
     {
         #region Course
         public static async Task<IEnumerable<CourseModel>> Convert(
-            this IEnumerable<Course> course, ApplicationDbContext db)
+            this IEnumerable<Course> courses, ApplicationDbContext db)
         {
-            if (course.Count().Equals(0))
+            if (courses.Count().Equals(0))
                 return new List<CourseModel>();
 
-            var texts = await db.CourseLinkText.ToListAsync();
+            var texts = await db.CourseLinkTexts.ToListAsync();
             var types = await db.CourseTypes.ToListAsync();
 
-            return from p in course
+            return from p in courses
                    select new CourseModel
                    {
                        Id = p.Id,
@@ -36,21 +36,21 @@ namespace courses.Areas.Admin.Extension
         }
 
         public static async Task<CourseModel> Convert(
-        this Course course, ApplicationDbContext db)
+        this Course courses, ApplicationDbContext db)
         {
-            var text = await db.CourseLinkText.FirstOrDefaultAsync(
-                p => p.Id.Equals(course.CourseLinkTextId));
+            var text = await db.CourseLinkTexts.FirstOrDefaultAsync(
+                p => p.Id.Equals(courses.CourseLinkTextId));
             var type = await db.CourseTypes.FirstOrDefaultAsync(
-                p => p.Id.Equals(course.CourseTypeId));
+                p => p.Id.Equals(courses.CourseTypeId));
 
             var model = new CourseModel
             {
-                Id = course.Id,
-                Title = course.Title,
-                Description = course.Description,
-                ImageUrl = course.ImageUrl,
-                CourseLinkTextId = course.CourseLinkTextId,
-                CourseTypeId = course.CourseTypeId,
+                Id = courses.Id,
+                Title = courses.Title,
+                Description = courses.Description,
+                ImageUrl = courses.ImageUrl,
+                CourseLinkTextId = courses.CourseLinkTextId,
+                CourseTypeId = courses.CourseTypeId,
                 CourseLinkTexts = new List<CourseLinkText>(),
                 CourseTypes = new List<CourseType>()
             };
@@ -91,7 +91,7 @@ namespace courses.Areas.Admin.Extension
                 ModuleId = courseModule.ModuleId,
                 CourseId = courseModule.CourseId,
                 Modules = addListData ? await db.Modules.ToListAsync() : null,
-            courses = addListData ? await db.Courses.ToListAsync() : null,
+            Courses = addListData ? await db.Courses.ToListAsync() : null,
             ModuleTitle =(await db.Modules.FirstOrDefaultAsync(i =>i.Id.Equals(courseModule.ModuleId))).Title,
             CourseTitle = (await db.Courses.FirstOrDefaultAsync(p=>p.Id.Equals(courseModule.CourseId))).Title
             };
@@ -101,11 +101,11 @@ namespace courses.Areas.Admin.Extension
         public static async Task<bool> CanChange(
             this CourseModule courseModule, ApplicationDbContext db)
         {
-            var oldPI = await db.CourseModules.CountAsync(pi =>
+            var oldPI = await db.courseModules.CountAsync(pi =>
                 pi.CourseId.Equals(courseModule.OldCourseId) &&
                 pi.ModuleId.Equals(courseModule.OldModuleId));
 
-            var newPI = await db.CourseModules.CountAsync(pi =>
+            var newPI = await db.courseModules.CountAsync(pi =>
                 pi.CourseId.Equals(courseModule.CourseId) &&
                 pi.ModuleId.Equals(courseModule.ModuleId));
 
@@ -115,11 +115,11 @@ namespace courses.Areas.Admin.Extension
         public static async Task Change(
             this CourseModule courseModule, ApplicationDbContext db)
         {
-            var oldCourseModule = await db.CourseModules.FirstOrDefaultAsync(
+            var oldCourseModule = await db.courseModules.FirstOrDefaultAsync(
                     pi => pi.CourseId.Equals(courseModule.OldCourseId) &&
                     pi.ModuleId.Equals(courseModule.OldModuleId));
 
-            var newCourseModule = await db.CourseModules.FirstOrDefaultAsync(
+            var newCourseModule = await db.courseModules.FirstOrDefaultAsync(
                 pi => pi.CourseId.Equals(courseModule.CourseId) &&
                 pi.ModuleId.Equals(courseModule.ModuleId));
 
@@ -136,8 +136,8 @@ namespace courses.Areas.Admin.Extension
                 {
                     try
                     {
-                        db.CourseModules.Remove(oldCourseModule);
-                        db.CourseModules.Add(newCourseModule);
+                        db.courseModules.Remove(oldCourseModule);
+                        db.courseModules.Add(newCourseModule);
 
                         await db.SaveChangesAsync();
                         transaction.Complete();

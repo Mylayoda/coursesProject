@@ -703,7 +703,7 @@ namespace courses.Controllers
                 if (ModelState.IsValid)
                 {
                     var db = new ApplicationDbContext();
-                    db.StudentSubscriptions.Add(new UserSubscription
+                    db.StudentSubscriptions.Add(new StudentSubscription
                     {
                         UserId = model.UserId,
                         SubscriptionId = model.SubscriptionId,

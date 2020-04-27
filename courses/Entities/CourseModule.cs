@@ -10,6 +10,7 @@ namespace courses.Entities
     [Table("CourseModule")]
     public class CourseModule
     {
+       
         [Required]
         [Key, Column(Order = 1)]
         public int CourseId { get; set; }
@@ -20,6 +21,6 @@ namespace courses.Entities
         public int OldCourseId { get; set; }
         [NotMapped]
         public int OldModuleId { get; set; }
-
+       
     }
 }

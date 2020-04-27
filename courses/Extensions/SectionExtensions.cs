@@ -11,14 +11,14 @@ namespace courses.Extensions
 {
     public static class SectionExtensions
     {
-        public static async Task<CourseSectionModel> GetProductSectionsAsync(
+        public static async Task<CourseSectionModel> GetCourseSectionsAsync(
         int courseId, string userId)
         {
             var db = ApplicationDbContext.Create();
 
             var sections = await (
                 from p in db.Courses
-                join pi in db.CourseModules on p.Id equals pi.CourseId
+                join pi in db.courseModules on p.Id equals pi.CourseId
                 join i in db.Modules on pi.ModuleId equals i.Id
                 join s in db.Sections on i.SectionId equals s.Id
                 where p.Id.Equals(courseId)

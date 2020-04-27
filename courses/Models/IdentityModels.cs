@@ -42,11 +42,11 @@ namespace courses.Models
         public DbSet<Module> Modules { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
-        public DbSet<CourseLinkText> CourseLinkText { get; set; }
+        public DbSet<CourseLinkText> CourseLinkTexts { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
-        public DbSet<CourseModule> CourseModules { get; set; }
+        public DbSet<CourseModule> courseModules { get; set; }
         public DbSet<CourseSubscription> CourseSubscriptions { get; set; }
-        public DbSet<UserSubscription> StudentSubscriptions { get; set; }
+        public DbSet<StudentSubscription> StudentSubscriptions { get; set; }
 
         
     }

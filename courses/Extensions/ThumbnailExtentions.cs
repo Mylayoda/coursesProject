@@ -18,9 +18,9 @@ namespace courses.Extensions
                 if (db == null) db = ApplicationDbContext.Create();
 
                 return await (
-                    from ss in db.StudentSubscriptions
-                    where ss.UserId.Equals(userId)
-                    select ss.SubscriptionId).ToListAsync();
+                    from us in db.StudentSubscriptions
+                    where us.UserId.Equals(userId)
+                    select us.SubscriptionId).ToListAsync();
             }
             catch { }
 
@@ -39,19 +39,19 @@ namespace courses.Extensions
                 var subscriptionIds = await GetSubscriptionIdsAsync(userId, db);
 
                 thumbnails = await (
-                    from cs in db.CourseSubscriptions
-                    join c in db.Courses on cs.CourseId equals c.Id
-                    join plt in db.CourseLinkText on c.CourseLinkTextId equals plt.Id
-                    //join pt in db.CourseModules on c.CourseModuleId equals pt.Id
-                    where subscriptionIds.Contains(cs.SubscriptionId)
+                    from ps in db.CourseSubscriptions
+                    join p in db.Courses on ps.CourseId equals p.Id
+                    join plt in db.CourseLinkTexts on p.CourseLinkTextId equals plt.Id
+                    //join pt in db.courseModules on p.CourseModuleId equals pt.Id
+                    where subscriptionIds.Contains(ps.SubscriptionId)
                     select new ThumbnailModel
                     {
-                        CourseId = c.Id,
-                        SubscriptionId = cs.SubscriptionId,
-                        Title = c.Title,
-                        Description = c.Description,
-                        ImageUrl = c.ImageUrl,
-                        Link = "/CourseContent/Index/" + c.Id,
+                        CourseId = p.Id,
+                        SubscriptionId = ps.SubscriptionId,
+                        Title = p.Title,
+                        Description = p.Description,
+                        ImageUrl = p.ImageUrl,
+                        Link = "/CourseContent/Index/" + p.Id,
                         TagText = plt.Title,
                         //ContentTag = pt.Title
                     }).ToListAsync();

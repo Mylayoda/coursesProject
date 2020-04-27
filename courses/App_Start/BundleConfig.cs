@@ -31,7 +31,8 @@ namespace courses
                      "~/Scripts/AdminMenu.js"));
             bundles.Add(new StyleBundle("~/Content/courses").Include(
                       "~/Content/navbar.css",
-                      "~/Content/thumbnails.css"));
+                      "~/Content/thumbnails.css",
+                      "~/Content/CourseContent.css"));
 
         }
     }

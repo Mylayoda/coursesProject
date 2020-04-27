@@ -7,7 +7,7 @@ using System.Web;
 
 namespace courses.Entities
 {
-    public class UserSubscription
+    public class StudentSubscription
     {
         [Required]
         [Key, Column(Order = 1)]
