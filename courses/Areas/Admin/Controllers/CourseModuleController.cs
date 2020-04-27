@@ -56,7 +56,8 @@ namespace courses.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CourseId,ModuleId")] CourseModule courseModule)
+        public async Task<ActionResult> Create(
+            [Bind(Include = "CourseId,ModuleId")] CourseModule courseModule)
         {
             if (ModelState.IsValid)
             {

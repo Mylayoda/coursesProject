@@ -20,11 +20,11 @@
     @Html.Hidden("OldModuleId", Model.ModuleId)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.courses, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Courses, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(
                 model => model.CourseId,
-                Model.courses.ToSelectListItem(Model.CourseId),
+                Model.Courses.ToSelectListItem(Model.CourseId),
                 new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
         </div>
