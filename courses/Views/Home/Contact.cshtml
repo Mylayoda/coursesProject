@@ -1,17 +1,60 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<title>
+    Contact Us
+</title>
+ <link href="~/Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+ <link href="~/Content/Contact.css" rel="stylesheet"/>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+ <body>
+         <div id="bg-image">
+             <div id="b-circle">
+                 <div class="animate-zooming" style="animation: animate-zooming 2s ease-in infinite; ">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                 </div>
+                 <div class="animate-zooming" style="animation: animate-zooming 1s ease-in infinite;">
+
+                 </div>
+                 <div class="circle">
+
+                 </div>
+                 <a href="mailto:21703340@bucks.ac.uk"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+             </div>
+
+             <div class="container">
+                 <div class="row">
+                     <center>
+                         <div class="column">
+                             <h2>Contact Us</h2>
+
+                             <img src="~/Content/images/ghana.png" style="width:50%">
+                         </div>
+                     </center>
+                     <div class="column">
+                         <form action="/action_page.php">
+                             <label for="fname">First Name</label><br>
+                             <input type="text" id="fname" name="firstname" placeholder="Your name.."><br>
+                             <label for="lname">Last Name</label><br>
+                             <input type="text" id="lname" name="lastname" placeholder="Your last name.."><br>
+                             <label for="Query">Query Type</label><br>
+                             <select id="Query" name="query">
+                                 <option value="student" style="color:darkblue">Student</option>
+                                 <option value="partner" style="color:darkblue">Partners</option>
+                                 <option value="Investor" style="color:darkblue">Investors</option>
+                             </select>
+                             <br><label for="subject">Subject</label><br>
+                             <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea><br>
+                             <input type="submit" value="Submit">
+                         </form>
+                     </div>
+                 </div>
+             </div><hr>
+             <center>
+             <div class="fa fa-envelope-open" style="color:white">
+                 <p><h3>123 MyProject-Work, United Kingdom. Tel: 004 7984 563</h3></p>
+             </div>
+             </center>
+
+         </div>
+ </body>
