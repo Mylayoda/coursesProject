@@ -37,7 +37,7 @@ namespace courses.Entities
                   HTML : HTML.Substring(0, 50);
             }
         }
-        public int ProductId { get; set; }
+        public int CourseId { get; set; }
         public int ModuleTypeId { get; set; }
         public int SectionId { get; set; }
         public int PartId { get; set; }
